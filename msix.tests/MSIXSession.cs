@@ -19,9 +19,9 @@ using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
 using System;
 
-namespace CalculatorTest
+namespace MSIXTests
 {
-    public class CalculatorSession
+    public class MSIXTests
     {
         // Note: append /wd/hub to the URL if you're directing the test at Appium
         private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
@@ -55,8 +55,8 @@ namespace CalculatorTest
                 appCapabilities.SetCapability("app", "Root");
                 DesktopSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
 
-                var CortanaWindow = DesktopSession.FindElementByName("MSIX Catalog - 0.1.1822.0");
-                var CortanaTopLevelWindowHandle = CortanaWindow.GetAttribute("NativeWindowHandle");
+                var MSIXWindow = DesktopSession.FindElementByName("MSIX Catalog - 0.1.1942.0");
+                var CortanaTopLevelWindowHandle = MSIXWindow.GetAttribute("NativeWindowHandle");
                 CortanaTopLevelWindowHandle = (int.Parse(CortanaTopLevelWindowHandle)).ToString("x"); // Convert to Hex
 
                 appCapabilities = new DesiredCapabilities();

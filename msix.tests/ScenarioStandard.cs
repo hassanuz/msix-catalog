@@ -19,13 +19,11 @@ using OpenQA.Selenium.Appium.Windows;
 using System.Threading;
 using System;
 
-namespace CalculatorTest
+namespace MSIXTests
 {
     [TestClass]
-    public class ScenarioStandard : CalculatorSession
+    public class ScenarioStandard : MSIXTests
     {
-        private static WindowsElement header;
-        private static WindowsElement calculatorResult;
 
         [TestMethod]
         public void Home()
@@ -119,9 +117,5 @@ namespace CalculatorTest
 
         }
 
-        private string GetCalculatorResultText()
-        {
-            return calculatorResult.Text.Replace("Display is", string.Empty).Trim();
-        }
     }
 }
