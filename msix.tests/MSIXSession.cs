@@ -82,9 +82,9 @@ namespace MSIXTests
 
                 // KeyboardInput VirtualKeys=""msix"" CapsLock=False NumLock=True ScrollLock=False
                 Console.WriteLine("KeyboardInput VirtualKeys=\"\"msix\"\" CapsLock=False NumLock=True ScrollLock=False");
-                System.Threading.Thread.Sleep(2000);
-                winElem_LeftClickEditSearchbox_186_26.SendKeys("msix");
+                winElem_LeftClickEditSearchbox_186_26.SendKeys("msix catalog");
 
+                System.Threading.Thread.Sleep(2000);
 
                 // LeftClick on ListItem "MSIX Catalog Nightly, Windows app, Press right to switch preview" at (394,22)
                 Console.WriteLine("LeftClick on ListItem \"MSIX Catalog Nightly, Windows app, Press right to switch preview\" at (394,22)");
@@ -100,6 +100,7 @@ namespace MSIXTests
                     return;
                 }
 
+                System.Threading.Thread.Sleep(2000);
 
                 // LeftClick on Text "About" at (120,16)
                 Console.WriteLine("LeftClick on Text \"About\" at (120,16)");
@@ -118,14 +119,14 @@ namespace MSIXTests
                 }
 
 
-                System.Threading.Thread.Sleep(5000);
+                System.Threading.Thread.Sleep(2000);
 
 
 
                 var MSIXWindow = DesktopSession.FindElementByName("MSIX Catalog - 0.1.1942.0 [Packaged from AppInstaller] [NET FRAMEWORK]");
                 var CortanaTopLevelWindowHandle = MSIXWindow.GetAttribute("NativeWindowHandle");
                 CortanaTopLevelWindowHandle = (int.Parse(CortanaTopLevelWindowHandle)).ToString("x"); // Convert to Hex
-                DesktopSession.Keyboard.SendKeys(Keys.Alt + Keys.Tab + Keys.Alt + Keys.Tab);
+                // DesktopSession.Keyboard.SendKeys(Keys.Alt + Keys.Tab + Keys.Alt + Keys.Tab);
                 appCapabilities = new DesiredCapabilities();
                 appCapabilities.SetCapability("appTopLevelWindow", CortanaTopLevelWindowHandle);
                 session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
