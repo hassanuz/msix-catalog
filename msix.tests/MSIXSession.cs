@@ -15,6 +15,7 @@
 //******************************************************************************
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
 using System;
@@ -25,8 +26,8 @@ namespace MSIXTests
     {
         // Note: append /wd/hub to the URL if you're directing the test at Appium
         private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-        private const string AppId = "18656RidoMin.MSIXCatalogNightly_0z5p9mqqb1pac!App";
-
+        private const string AppId = "18656RidoMin.MSIXCatalog_vzj0fd0atvkjr!App";
+        private const string AppIdNightly = "18656RidoMin.MSIXCatalogNightly_0z5p9mqqb1pac!App";
         protected static WindowsDriver<WindowsElement> session;
         protected static WindowsDriver<WindowsElement> DesktopSession;
 
@@ -43,9 +44,9 @@ namespace MSIXTests
                 DesktopSession = null;
                 try
                 {
-                    appCapabilities.SetCapability("app", AppId);
+                    appCapabilities.SetCapability("app", AppIdNightly);
                     DesktopSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
-
+               
                 }
                 catch
                 {
@@ -54,16 +55,15 @@ namespace MSIXTests
 
                 appCapabilities.SetCapability("app", "Root");
                 DesktopSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
-
+                
 
                 var MSIXWindow = DesktopSession.FindElementByName("MSIX Catalog - 0.1.1942.0");
                 var CortanaTopLevelWindowHandle = MSIXWindow.GetAttribute("NativeWindowHandle");
                 CortanaTopLevelWindowHandle = (int.Parse(CortanaTopLevelWindowHandle)).ToString("x"); // Convert to Hex
-
+                DesktopSession.Keyboard.SendKeys(Keys.Alt + Keys.Tab + Keys.Alt + Keys.Tab);
                 appCapabilities = new DesiredCapabilities();
                 appCapabilities.SetCapability("appTopLevelWindow", CortanaTopLevelWindowHandle);
                 session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
-                
                 Assert.IsNotNull(session);
 
                 // Set implicit timeout to 1.5 seconds to make element search to retry every 500 ms for at most three times
