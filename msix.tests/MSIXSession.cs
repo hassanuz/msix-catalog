@@ -57,7 +57,7 @@ namespace MSIXTests
                 DesktopSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
                 
 
-                var MSIXWindow = DesktopSession.FindElementByName("MSIX Catalog - 0.1.1942.0");
+                var MSIXWindow = DesktopSession.FindElementByName("MSIX Catalog - 0.1.1942.0 [Packaged from AppInstaller] [NET FRAMEWORK]");
                 var CortanaTopLevelWindowHandle = MSIXWindow.GetAttribute("NativeWindowHandle");
                 CortanaTopLevelWindowHandle = (int.Parse(CortanaTopLevelWindowHandle)).ToString("x"); // Convert to Hex
                 DesktopSession.Keyboard.SendKeys(Keys.Alt + Keys.Tab + Keys.Alt + Keys.Tab);
