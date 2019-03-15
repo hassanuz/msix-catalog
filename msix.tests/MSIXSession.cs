@@ -55,6 +55,7 @@ namespace MSIXTests
                 if (winElem_LeftClickButtonStart_0_79 != null)
                 {
                     winElem_LeftClickButtonStart_0_79.Click();
+                    Console.WriteLine("Click successful.");
                 }
                 else
                 {
@@ -62,7 +63,7 @@ namespace MSIXTests
                     return;
                 }
 
-                System.Threading.Thread.Sleep(10000);
+                System.Threading.Thread.Sleep(3000);
 
                 // LeftClick on Edit "Search box" at (186,26)
                 Console.WriteLine("LeftClick on Edit \"Search box\" at (186,26)");
@@ -70,7 +71,9 @@ namespace MSIXTests
                 var winElem_LeftClickEditSearchbox_186_26 = DesktopSession.FindElementByXPath(xpath_LeftClickEditSearchbox_186_26);
                 if (winElem_LeftClickEditSearchbox_186_26 != null)
                 {
+             
                     winElem_LeftClickEditSearchbox_186_26.Click();
+                    Console.WriteLine("Click successful.");
                 }
                 else
                 {
@@ -78,14 +81,14 @@ namespace MSIXTests
                     return;
                 }
 
-                System.Threading.Thread.Sleep(10000);
+                System.Threading.Thread.Sleep(3000);
 
 
                 // KeyboardInput VirtualKeys=""msix"" CapsLock=False NumLock=True ScrollLock=False
                 Console.WriteLine("KeyboardInput VirtualKeys=\"\"msix\"\" CapsLock=False NumLock=True ScrollLock=False");
                 winElem_LeftClickEditSearchbox_186_26.SendKeys("msix catalog");
 
-                System.Threading.Thread.Sleep(10000);
+                System.Threading.Thread.Sleep(3000);
 
                 // LeftClick on ListItem "MSIX Catalog Nightly, Windows app, Press right to switch preview" at (394,22)
                 Console.WriteLine("LeftClick on ListItem \"MSIX Catalog Nightly, Windows app, Press right to switch preview\" at (394,22)");
