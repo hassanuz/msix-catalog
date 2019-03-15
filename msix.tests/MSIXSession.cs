@@ -42,20 +42,85 @@ namespace MSIXTests
                 DesiredCapabilities appCapabilities = new DesiredCapabilities();
                 appCapabilities.SetCapability("deviceName", "WindowsPC");
                 DesktopSession = null;
-                try
-                {
-                    appCapabilities.SetCapability("app", AppIdNightly);
-                    DesktopSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
-               
-                }
-                catch
-                {
-
-                }
+             
 
                 appCapabilities.SetCapability("app", "Root");
                 DesktopSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
-                
+
+
+                Console.WriteLine("LeftClick on Button \"Start\" at (0,79)");
+                string xpath_LeftClickButtonStart_0_79 = "/Pane[@Name=\"Desktop 1\"][@ClassName=\"#32769\"]/Pane[@Name=\"Taskbar\"][@ClassName=\"Shell_TrayWnd\"]/Button[@Name=\"Start\"][@ClassName=\"Start\"]";
+                var winElem_LeftClickButtonStart_0_79 = DesktopSession.FindElementByXPath(xpath_LeftClickButtonStart_0_79);
+                if (winElem_LeftClickButtonStart_0_79 != null)
+                {
+                    winElem_LeftClickButtonStart_0_79.Click();
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to find element using xpath: {xpath_LeftClickButtonStart_0_79}");
+                    return;
+                }
+
+                System.Threading.Thread.Sleep(2000);
+
+                // LeftClick on Edit "Search box" at (186,26)
+                Console.WriteLine("LeftClick on Edit \"Search box\" at (186,26)");
+                string xpath_LeftClickEditSearchbox_186_26 = "/Pane[@Name=\"Desktop 1\"][@ClassName=\"#32769\"]/Window[@Name=\"Start\"][@ClassName=\"Windows.UI.Core.CoreWindow\"]/Window[@Name=\"Cortana\"][@ClassName=\"Windows.UI.Core.CoreWindow\"]/Edit[@AutomationId=\"SearchTextBox\"][@Name=\"Search box\"]";
+                var winElem_LeftClickEditSearchbox_186_26 = DesktopSession.FindElementByXPath(xpath_LeftClickEditSearchbox_186_26);
+                if (winElem_LeftClickEditSearchbox_186_26 != null)
+                {
+                    winElem_LeftClickEditSearchbox_186_26.Click();
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to find element using xpath: {xpath_LeftClickEditSearchbox_186_26}");
+                    return;
+                }
+
+                System.Threading.Thread.Sleep(2000);
+
+
+                // KeyboardInput VirtualKeys=""msix"" CapsLock=False NumLock=True ScrollLock=False
+                Console.WriteLine("KeyboardInput VirtualKeys=\"\"msix\"\" CapsLock=False NumLock=True ScrollLock=False");
+                System.Threading.Thread.Sleep(2000);
+                winElem_LeftClickEditSearchbox_186_26.SendKeys("msix");
+
+
+                // LeftClick on ListItem "MSIX Catalog Nightly, Windows app, Press right to switch preview" at (394,22)
+                Console.WriteLine("LeftClick on ListItem \"MSIX Catalog Nightly, Windows app, Press right to switch preview\" at (394,22)");
+                string xpath_LeftClickListItemMSIXCatalo_394_22 = "/Pane[@Name=\"Desktop 1\"][@ClassName=\"#32769\"]/Window[@Name=\"Cortana\"][@ClassName=\"Windows.UI.Core.CoreWindow\"]/Pane[@Name=\"Bing\"][@ClassName=\"WebView\"]/Pane[@Name=\"Bing\"]/List[@AutomationId=\"suggestionsList\"][@Name=\"Results\"]/ListItem[starts-with(@AutomationId,\"id_\")][starts-with(@Name,\"MSIX Catalog Nightly, Windows app, Press right to switch preview\")]";
+                var winElem_LeftClickListItemMSIXCatalo_394_22 = DesktopSession.FindElementByXPath(xpath_LeftClickListItemMSIXCatalo_394_22);
+                if (winElem_LeftClickListItemMSIXCatalo_394_22 != null)
+                {
+                    winElem_LeftClickListItemMSIXCatalo_394_22.Click();
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to find element using xpath: {xpath_LeftClickListItemMSIXCatalo_394_22}");
+                    return;
+                }
+
+
+                // LeftClick on Text "About" at (120,16)
+                Console.WriteLine("LeftClick on Text \"About\" at (120,16)");
+                string xpath_LeftClickTextAbout_120_16 = "/Pane[@Name=\"Desktop 1\"][@ClassName=\"#32769\"]/Window[@ClassName=\"Window\"]/List[@AutomationId=\"OptionsListView\"][@Name=\"Option items\"]/ListItem[@Name=\"msix.catalog.app.ViewModels.MenuItem\"][@ClassName=\"ListBoxItem\"]/Text[@Name=\"About\"][@ClassName=\"TextBlock\"]";
+                System.Threading.Thread.Sleep(5000);
+
+                var winElem_LeftClickTextAbout_120_16 = DesktopSession.FindElementByXPath(xpath_LeftClickTextAbout_120_16);
+                if (winElem_LeftClickTextAbout_120_16 != null)
+                {
+                    winElem_LeftClickTextAbout_120_16.Click();
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to find element using xpath: {xpath_LeftClickTextAbout_120_16}");
+                    return;
+                }
+
+
+                System.Threading.Thread.Sleep(5000);
+
+
 
                 var MSIXWindow = DesktopSession.FindElementByName("MSIX Catalog - 0.1.1942.0 [Packaged from AppInstaller] [NET FRAMEWORK]");
                 var CortanaTopLevelWindowHandle = MSIXWindow.GetAttribute("NativeWindowHandle");
@@ -83,5 +148,34 @@ namespace MSIXTests
 
             }
         }
+        public static WindowsElement FindElementByXPath(string xPath)
+        {
+            WindowsElement uiTarget = null;
+            int nTryCount = 10;
+
+            while (nTryCount-- > 0)
+            {
+                try
+                {
+                    uiTarget = DesktopSession.FindElementByXPath(xPath);
+                }
+                catch
+                {
+                }
+
+                if (uiTarget != null)
+                {
+                    System.Threading.Thread.Sleep(500); // default delay
+                    break;
+                }
+                else
+                {
+                    System.Threading.Thread.Sleep(2000);
+                }
+            }
+
+            return uiTarget;
+        }
     }
 }
+
