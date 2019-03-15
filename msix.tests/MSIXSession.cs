@@ -64,52 +64,29 @@ namespace MSIXTests
                 }
 
                 System.Threading.Thread.Sleep(3000);
-
-                // LeftClick on Edit "Search box" at (186,26)
-                Console.WriteLine("LeftClick on Edit \"Search box\" at (186,26)");
-                string xpath_LeftClickEditSearchbox_186_26 = "/Pane[@Name=\"Desktop 1\"][@ClassName=\"#32769\"]/Window[@Name=\"Start\"][@ClassName=\"Windows.UI.Core.CoreWindow\"]/Window[@Name=\"Cortana\"][@ClassName=\"Windows.UI.Core.CoreWindow\"]/Edit[@AutomationId=\"SearchTextBox\"][@Name=\"Search box\"]";
-                var winElem_LeftClickEditSearchbox_186_26 = DesktopSession.FindElementByXPath(xpath_LeftClickEditSearchbox_186_26);
-                if (winElem_LeftClickEditSearchbox_186_26 != null)
+                        // LeftClick on ListItem "MSIX Catalog Nightly" at(189, 45)
+                Console.WriteLine("LeftClick on ListItem \"MSIX Catalog Nightly\" at (189,45)");
+                string xpath_LeftClickListItemMSIXCatalo_189_45 = "/Pane[@Name=\"Desktop 1\"][@ClassName=\"#32769\"]/Window[@Name=\"Start\"][@ClassName=\"Windows.UI.Core.CoreWindow\"]/Window[@AutomationId=\"SplitViewFrameXAMLWindow\"]/SemanticZoom[@AutomationId=\"ZoomControl\"][@Name=\"All apps\"]/List[@AutomationId=\"AppsList\"][@Name=\"All apps\"]/Group[@AutomationId=\"RecentList\"][@Name=\"Recently added\"]/ListItem[@AutomationId=\"P~18656RidoMin.MSIXCatalogNightly_0z5p9mqqb1pac!App\"][@Name=\"MSIX Catalog Nightly\"]";
+                var winElem_LeftClickListItemMSIXCatalo_189_45 = DesktopSession.FindElementByXPath(xpath_LeftClickListItemMSIXCatalo_189_45);
+                if (winElem_LeftClickListItemMSIXCatalo_189_45 != null)
                 {
-             
-                    winElem_LeftClickEditSearchbox_186_26.Click();
+                    winElem_LeftClickListItemMSIXCatalo_189_45.Click();
                     Console.WriteLine("Click successful.");
                 }
                 else
                 {
-                    Console.WriteLine($"Failed to find element using xpath: {xpath_LeftClickEditSearchbox_186_26}");
+                    Console.WriteLine($"Failed to find element using xpath: {xpath_LeftClickListItemMSIXCatalo_189_45}");
                     return;
                 }
 
+
+                
                 System.Threading.Thread.Sleep(3000);
-
-
-                // KeyboardInput VirtualKeys=""msix"" CapsLock=False NumLock=True ScrollLock=False
-                Console.WriteLine("KeyboardInput VirtualKeys=\"\"msix\"\" CapsLock=False NumLock=True ScrollLock=False");
-                winElem_LeftClickEditSearchbox_186_26.SendKeys("msix catalog");
-
-                System.Threading.Thread.Sleep(3000);
-
-                // LeftClick on ListItem "MSIX Catalog Nightly, Windows app, Press right to switch preview" at (394,22)
-                Console.WriteLine("LeftClick on ListItem \"MSIX Catalog Nightly, Windows app, Press right to switch preview\" at (394,22)");
-                string xpath_LeftClickListItemMSIXCatalo_394_22 = "/Pane[@Name=\"Desktop 1\"][@ClassName=\"#32769\"]/Window[@Name=\"Cortana\"][@ClassName=\"Windows.UI.Core.CoreWindow\"]/Pane[@Name=\"Bing\"][@ClassName=\"WebView\"]/Pane[@Name=\"Bing\"]/List[@AutomationId=\"suggestionsList\"][@Name=\"Results\"]/ListItem[starts-with(@AutomationId,\"id_\")][starts-with(@Name,\"MSIX Catalog Nightly, Windows app, Press right to switch preview\")]";
-                var winElem_LeftClickListItemMSIXCatalo_394_22 = DesktopSession.FindElementByXPath(xpath_LeftClickListItemMSIXCatalo_394_22);
-                if (winElem_LeftClickListItemMSIXCatalo_394_22 != null)
-                {
-                    winElem_LeftClickListItemMSIXCatalo_394_22.Click();
-                }
-                else
-                {
-                    Console.WriteLine($"Failed to find element using xpath: {xpath_LeftClickListItemMSIXCatalo_394_22}");
-                    return;
-                }
-
-                System.Threading.Thread.Sleep(10000);
 
                 // LeftClick on Text "About" at (120,16)
                 Console.WriteLine("LeftClick on Text \"About\" at (120,16)");
                 string xpath_LeftClickTextAbout_120_16 = "/Pane[@Name=\"Desktop 1\"][@ClassName=\"#32769\"]/Window[@ClassName=\"Window\"]/List[@AutomationId=\"OptionsListView\"][@Name=\"Option items\"]/ListItem[@Name=\"msix.catalog.app.ViewModels.MenuItem\"][@ClassName=\"ListBoxItem\"]/Text[@Name=\"About\"][@ClassName=\"TextBlock\"]";
-                System.Threading.Thread.Sleep(10000);
+                System.Threading.Thread.Sleep(3000);
 
                 var winElem_LeftClickTextAbout_120_16 = DesktopSession.FindElementByXPath(xpath_LeftClickTextAbout_120_16);
                 if (winElem_LeftClickTextAbout_120_16 != null)
