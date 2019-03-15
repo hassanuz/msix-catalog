@@ -47,6 +47,7 @@ namespace MSIXTests
                 appCapabilities.SetCapability("app", "Root");
                 DesktopSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
 
+                System.Threading.Thread.Sleep(1000);
 
                 Console.WriteLine("LeftClick on Button \"Start\" at (0,79)");
                 string xpath_LeftClickButtonStart_0_79 = "/Pane[@Name=\"Desktop 1\"][@ClassName=\"#32769\"]/Pane[@Name=\"Taskbar\"][@ClassName=\"Shell_TrayWnd\"]/Button[@Name=\"Start\"][@ClassName=\"Start\"]";
@@ -61,7 +62,7 @@ namespace MSIXTests
                     return;
                 }
 
-                System.Threading.Thread.Sleep(2000);
+                System.Threading.Thread.Sleep(10000);
 
                 // LeftClick on Edit "Search box" at (186,26)
                 Console.WriteLine("LeftClick on Edit \"Search box\" at (186,26)");
@@ -77,14 +78,14 @@ namespace MSIXTests
                     return;
                 }
 
-                System.Threading.Thread.Sleep(2000);
+                System.Threading.Thread.Sleep(10000);
 
 
                 // KeyboardInput VirtualKeys=""msix"" CapsLock=False NumLock=True ScrollLock=False
                 Console.WriteLine("KeyboardInput VirtualKeys=\"\"msix\"\" CapsLock=False NumLock=True ScrollLock=False");
                 winElem_LeftClickEditSearchbox_186_26.SendKeys("msix catalog");
 
-                System.Threading.Thread.Sleep(2000);
+                System.Threading.Thread.Sleep(10000);
 
                 // LeftClick on ListItem "MSIX Catalog Nightly, Windows app, Press right to switch preview" at (394,22)
                 Console.WriteLine("LeftClick on ListItem \"MSIX Catalog Nightly, Windows app, Press right to switch preview\" at (394,22)");
@@ -100,12 +101,12 @@ namespace MSIXTests
                     return;
                 }
 
-                System.Threading.Thread.Sleep(2000);
+                System.Threading.Thread.Sleep(10000);
 
                 // LeftClick on Text "About" at (120,16)
                 Console.WriteLine("LeftClick on Text \"About\" at (120,16)");
                 string xpath_LeftClickTextAbout_120_16 = "/Pane[@Name=\"Desktop 1\"][@ClassName=\"#32769\"]/Window[@ClassName=\"Window\"]/List[@AutomationId=\"OptionsListView\"][@Name=\"Option items\"]/ListItem[@Name=\"msix.catalog.app.ViewModels.MenuItem\"][@ClassName=\"ListBoxItem\"]/Text[@Name=\"About\"][@ClassName=\"TextBlock\"]";
-                System.Threading.Thread.Sleep(5000);
+                System.Threading.Thread.Sleep(10000);
 
                 var winElem_LeftClickTextAbout_120_16 = DesktopSession.FindElementByXPath(xpath_LeftClickTextAbout_120_16);
                 if (winElem_LeftClickTextAbout_120_16 != null)
@@ -119,7 +120,7 @@ namespace MSIXTests
                 }
 
 
-                System.Threading.Thread.Sleep(2000);
+                System.Threading.Thread.Sleep(10000);
 
 
 
